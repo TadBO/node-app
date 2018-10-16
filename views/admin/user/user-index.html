@@ -1,0 +1,29 @@
+{% extends '../layout.html' %}
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="/admin">管理首页</a></li>
+    <li class="active">用户列表</li>
+</ol>
+<h4>用户列表</h4>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>管理权限</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user._id.toString() }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>{% if user.type == 1 %}否{% else %}是{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include '../page.html' %}
+{% endblock %}
